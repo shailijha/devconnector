@@ -26,7 +26,6 @@
         <li><a href="profiles.html">Developers</a></li>
         <li><a href="posts.html">Posts</a></li>
         <li>
-          |
           <a href="dashboard.html">
             <i class="fas fa-user"></i>
             <span class="hide-sm"> Dashboard</span></a
@@ -42,25 +41,35 @@
     </nav>
     <section class="container">
       <h1 class="large text-primary">
-        Add an Experience
+        Add Your Education
       </h1>
       <p class="lead">
-        <i class="fas fa-code-branch"></i> Add any developer/programming
-        positions that you have had in the past
+        <i class="fas fa-graduation-cap"></i> Add any school, bootcamp, etc.
+        that you have attended
       </p>
       <small>* = required field</small>
       <form class="form">
         <div class="form-group">
-          <input type="text" placeholder="* Job title" name="title" required />
-        </div>
-        <div class="form-group">
-          <input type="text" placeholder="* Company" name="company" required />
+          <input
+            type="text"
+            placeholder="* School or Bootcamp"
+            name="school"
+            required
+          />
         </div>
         <div class="form-group">
           <input
             type="text"
-            placeholder="* Location"
-            name="location"
+            placeholder="* Degree or Cettificate"
+            name="degree"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            placeholder="* Field of Study"
+            name="fieldofstudy"
             required
           />
         </div>
@@ -73,7 +82,9 @@
           <input type="date" name="to" />
         </div>
         <div class="form-group">
-          <p><input type="checkbox" name="current" value="" /> Current Job</p>
+          <p>
+            <input type="checkbox" name="current" value="" /> Current School
+          </p>
         </div>
         <div class="form-group">
           <textarea
@@ -81,7 +92,7 @@
             id=""
             cols="30"
             rows="5"
-            placeholder="Job Description"
+            placeholder="Program Description"
           ></textarea>
         </div>
         <input type="submit" class="btn btn-primary my-1" />
