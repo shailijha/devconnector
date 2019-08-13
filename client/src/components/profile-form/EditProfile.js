@@ -70,12 +70,12 @@ const EditProfile = ({
 
   const onSubmit = e => {
     e.preventDefault();
-    createProfile(formData, history);
+    createProfile(formData, history, true);
   };
 
   return (
     <Fragment>
-      <h1 className='large text-primary'>Create Your Profile</h1>
+      <h1 className='large text-primary'>Edit Your Profile</h1>
       <p className='lead'>
         <i className='fas fa-user' /> Let's get some information to make your
         profile stand out
@@ -242,9 +242,9 @@ const EditProfile = ({
         )}
 
         <input type='submit' className='btn btn-primary my-1' />
-        <a href='dashboard.html' className='btn btn-light my-1'>
+        <Link to='/dashboard' className='btn btn-light my-1'>
           Go Back
-        </a>
+        </Link>
       </form>
     </Fragment>
   );
