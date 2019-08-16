@@ -4,7 +4,7 @@ const { check, validationResult } = require('express-validator');
 
 //Bring in all the models as they will be used for post route
 const Post = require('../../models/Post');
-const profile = require('../../models/profile');
+const Profile = require('../../models/profile');
 const User = require('../../models/User');
 
 const auth = require('../../middleware/auth');
@@ -18,7 +18,7 @@ router.post(
   [
     auth,
     [
-      check('text')
+      check('text', 'Text is required')
         .not()
         .isEmpty()
     ]
