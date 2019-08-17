@@ -423,6 +423,27 @@ img {
   align-items: center;
   text-align: center;
 }
+.profile-grid .profile-about .skills i {
+  padding: 0.5rem;
+}
+.profile-grid .profile-about .skills i.fa-html5 {
+  color: #fa502e;
+}
+.profile-grid .profile-about .skills i.fa-css3-alt {
+  color: #1572b6;
+}
+.profile-grid .profile-about .skills i.fa-js-square {
+  color: #f7df1e;
+}
+.profile-grid .profile-about .skills i.fa-java {
+  color: #5283a2;
+}
+.profile-grid .profile-about .skills i.fa-php {
+  color: #777bb3;
+}
+.profile-grid .profile-about .skills i.fa-react {
+  color: #64dbfb;
+}
 .profile-grid .profile-exp {
   -ms-grid-row: 3;
   -ms-grid-column: 1;
