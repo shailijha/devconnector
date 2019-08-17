@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
-import { deleteComment } from '../../actions/post';
+import { deleteComment, updateComment } from '../../actions/post';
 
 const CommentItem = ({
   postId,
@@ -24,13 +24,22 @@ const CommentItem = ({
         Posted on <Moment format='YYYY/MM/DD'>{date}</Moment>
       </p>
       {!auth.loading && user === auth.user._id && (
-        <button
-          onClick={e => deleteComment(postId, _id)}
-          type='button'
-          className='btn btn-danger'
-        >
-          <i className='fas fa-times' />
-        </button>
+        <Fragment>
+          <button
+            onClick={e => deleteComment(postId, _id)}
+            type='button'
+            className='btn btn-danger'
+          >
+            <i className='fas fa-times' />
+          </button>
+          <button
+            onClick={e => updateComment(postId, _id, text)}
+            type='button'
+            className='btn'
+          >
+            <i className='far fa-edit' />
+          </button>
+        </Fragment>
       )}
     </div>
   </div>
@@ -40,7 +49,8 @@ CommentItem.propTypes = {
   auth: PropTypes.object.isRequired,
   postId: PropTypes.number.isRequired,
   comment: PropTypes.object.isRequired,
-  deleteComment: PropTypes.func.isRequired
+  deleteComment: PropTypes.func.isRequired,
+  updateComment: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -49,5 +59,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { deleteComment }
+  { deleteComment, updateComment }
 )(CommentItem);
