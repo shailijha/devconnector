@@ -212,7 +212,7 @@ router.post(
 );
 
 // @route DELETE api/posts/comment/:id/:comment_id
-// @desc Delet a comment
+// @desc Delete a comment
 // @access Private
 
 router.delete('/comment/:id/:comment_id', auth, async (req, res) => {
@@ -237,10 +237,61 @@ router.delete('/comment/:id/:comment_id', auth, async (req, res) => {
     }
 
     const removedIndex = post.comments
-      .map(like => like.user.toString())
+      .map(comment => comment.user.toString())
       .indexOf(req.user.id);
 
     post.comments.splice(removedIndex, 1);
+
+    await post.save();
+
+    res.json(post.comments);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Server error');
+  }
+});
+
+// @route POST api/posts/comment/:id/:comment_id
+// @desc Update a comment
+// @access Private
+
+router.post('/comment/:id/:comment_id', auth, async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id).select('-password');
+    const post = await Post.findById(req.params.id);
+
+    // Pull out comment
+
+    const comment = post.comments.find(
+      comment => comment.id === req.params.comment_id
+    );
+
+    // if comment does not exist
+    if (!comment) {
+      return res.status(404).json({ msg: 'Comment does not exist' });
+    }
+
+    //Check user
+
+    if (comment.user.toString() !== req.user.id) {
+      return res.status(401).json({ msg: 'Unauthorized user' });
+    }
+
+    const updateIndex = post.comments
+      .map(comment => comment.user.toString())
+      .indexOf(req.user.id);
+    console.log('Updated comment index');
+    console.log(post.comments[updateIndex]);
+    console.log(req.user.name, req.user.avatar);
+
+    const updatedComment = {
+      text: req.body.text,
+      name: user.name,
+      avatar: user.avatar,
+      user: req.user.id
+    };
+
+    post.comments.splice(updateIndex, 1, updatedComment);
 
     await post.save();
 
