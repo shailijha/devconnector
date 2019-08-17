@@ -128,6 +128,39 @@ img {
       justify-content: center;
       align-items: center;
       text-align: center;
+
+      i {
+        padding: 0.5rem;
+        //width: 4rem;
+        // Add styles for Java, PHP,
+        //<i class="fab fa-java"></i>
+        //<i class="fab fa-php"></i>
+        //<i class="fab fa-react"></i>
+
+        &.fa-html5 {
+          color: #fa502e;
+        }
+
+        &.fa-css3-alt {
+          color: #1572b6;
+        }
+
+        &.fa-js-square {
+          color: #f7df1e;
+        }
+
+        &.fa-java {
+          color: #5283a2;
+        }
+
+        &.fa-php {
+          color: #777bb3;
+        }
+
+        &.fa-react {
+          color: #64dbfb;
+        }
+      }
     }
   }
 
@@ -212,5 +245,7 @@ img {
     margin-bottom: 0.5rem;
   }
 }
+
+// Adding styles for languages
 
 @import 'mobile';
