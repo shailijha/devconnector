@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addExperience } from '../../actions/profile';
@@ -17,6 +17,8 @@ const AddExperience = ({ addExperience, history }) => {
   const [toDateDisabled, toggleDisabled] = useState(false);
 
   const { company, title, location, from, to, current, description } = formData;
+
+  useEffect(() => (document.title = 'Add Experience'));
 
   const onChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
