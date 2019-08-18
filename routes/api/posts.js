@@ -218,7 +218,6 @@ router.post(
 router.delete('/comment/:id/:comment_id', auth, async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
-
     // Pull out comment
 
     const comment = post.comments.find(
@@ -255,11 +254,10 @@ router.delete('/comment/:id/:comment_id', auth, async (req, res) => {
 // @desc Update a comment
 // @access Private
 
-router.post('/comment/:id/:comment_id', auth, async (req, res) => {
+router.post('/comment/update/:id/:comment_id', auth, async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select('-password');
     const post = await Post.findById(req.params.id);
-
     // Pull out comment
 
     const comment = post.comments.find(
@@ -280,9 +278,6 @@ router.post('/comment/:id/:comment_id', auth, async (req, res) => {
     const updateIndex = post.comments
       .map(comment => comment.user.toString())
       .indexOf(req.user.id);
-    //console.log('Updated comment index');
-    //console.log(post.comments[updateIndex]);
-    //console.log(req.user.name, req.user.avatar);
 
     const updatedComment = {
       text: req.body.text,
