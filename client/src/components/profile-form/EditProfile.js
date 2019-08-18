@@ -39,16 +39,15 @@ const EditProfile = ({
       githubusername:
         loading || !profile.githubusername ? '' : profile.githubusername,
       bio: loading || !profile.bio ? '' : profile.bio,
-      twitter: loading || !profile.social.twitter ? '' : profile.social.twitter,
-      facebook:
-        loading || !profile.social.facebook ? '' : profile.social.facebook,
-      linkedin:
-        loading || !profile.social.linkedin ? '' : profile.social.linkedin,
-      youtube: loading || !profile.social.youtube ? '' : profile.social.youtube,
-      instagram:
-        loading || !profile.social.instagram ? '' : profile.social.instagram
+      twitter: loading || !profile.social ? '' : profile.social.twitter,
+      facebook: loading || !profile.social ? '' : profile.social.facebook,
+      linkedin: loading || !profile.social ? '' : profile.social.linkedin,
+      youtube: loading || !profile.social ? '' : profile.social.youtube,
+      instagram: loading || !profile.social ? '' : profile.social.instagram
     });
-  }, [loading]);
+
+    document.title = 'Edit Profile';
+  }, [loading, getCurrentProfile]);
 
   const {
     company,
@@ -77,8 +76,7 @@ const EditProfile = ({
     <Fragment>
       <h1 className='large text-primary'>Edit Your Profile</h1>
       <p className='lead'>
-        <i className='fas fa-user' /> Let's get some information to make your
-        profile stand out
+        <i className='fas fa-user' /> Add some changes to your profile
       </p>
       <small>* = required fields</small>
       <form className='form' onSubmit={e => onSubmit(e)}>
@@ -256,11 +254,11 @@ EditProfile.propTypes = {
   profile: PropTypes.object.isRequired
 };
 
-const mapToStateProps = state => ({
+const mapStateToProps = state => ({
   profile: state.profile
 });
 
 export default connect(
-  mapToStateProps,
+  mapStateToProps,
   { createProfile, getCurrentProfile }
 )(withRouter(EditProfile));
