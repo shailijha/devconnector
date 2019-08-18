@@ -29,6 +29,7 @@ if (localStorage.token) {
 
 const App = () => {
   useEffect(() => {
+    document.title = 'Welcome to Geekbook';
     store.dispatch(loadUser());
   }, []);
   return (
