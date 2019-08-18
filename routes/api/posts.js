@@ -254,12 +254,11 @@ router.delete('/comment/:id/:comment_id', auth, async (req, res) => {
 // @desc Update a comment
 // @access Private
 
-router.post('/comment/update/:id/:comment_id', auth, async (req, res) => {
+router.post('/comment/:id/:comment_id', auth, async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select('-password');
     const post = await Post.findById(req.params.id);
     // Pull out comment
-
     const comment = post.comments.find(
       comment => comment.id === req.params.comment_id
     );
@@ -275,9 +274,13 @@ router.post('/comment/update/:id/:comment_id', auth, async (req, res) => {
       return res.status(401).json({ msg: 'Unauthorized user' });
     }
 
-    const updateIndex = post.comments
-      .map(comment => comment.user.toString())
-      .indexOf(req.user.id);
+    const updateIndex = post.comments.findIndex(
+      comment => comment._id == req.params.comment_id
+    );
+    /*console.log(req.params.comment_id);
+    console.log('post comments');
+    console.log(post.comments);
+    console.log(post.comments.findIndex(x => x._id == req.params.comment_id));*/
 
     const updatedComment = {
       text: req.body.text,
@@ -287,7 +290,8 @@ router.post('/comment/update/:id/:comment_id', auth, async (req, res) => {
     };
 
     post.comments.splice(updateIndex, 1, updatedComment);
-
+    //console.log('post comments after splicing');
+    //console.log(post.comments);
     await post.save();
 
     res.json(post.comments);
