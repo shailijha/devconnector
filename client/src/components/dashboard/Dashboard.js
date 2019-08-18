@@ -14,7 +14,10 @@ const Dashboard = ({
   auth: { user },
   profile: { profile, loading }
 }) => {
+  //componentDidMount(() => (document.title = 'Dashboard'));
+
   useEffect(() => {
+    document.title = 'Dashboard';
     getCurrentProfile();
   }, []);
 
