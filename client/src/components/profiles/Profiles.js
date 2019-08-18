@@ -8,6 +8,7 @@ import { getProfiles } from '../../actions/profile';
 const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
   useEffect(() => {
     getProfiles();
+    document.title = 'Developers';
   }, [getProfiles]);
 
   return (
