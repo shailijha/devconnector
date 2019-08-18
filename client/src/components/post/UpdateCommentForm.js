@@ -10,7 +10,7 @@ const UpdateCommentForm = ({
   updateComment
 }) => {
   const [text, setText] = useState('');
-
+  //console.log(`comment id in update comment form ${commentId}`);
   /*const onSubmit = e => {
     console.log(document.getElementById('commentform').value);
     e.preventDefault();
