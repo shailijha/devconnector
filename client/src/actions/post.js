@@ -169,7 +169,7 @@ export const updateComment = (
     console.log(postId, commentId, formData);
 
     const res = await axios.post(
-      `/api/posts/comment/update/${postId}/${commentId}`,
+      `/api/posts/comment/${postId}/${commentId}`,
       formData,
       config
     );
