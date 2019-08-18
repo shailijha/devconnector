@@ -10,6 +10,7 @@ import CommentItem from './CommentItem';
 
 const Post = ({ getPost, post: { post, loading }, match }) => {
   useEffect(() => {
+    document.title = 'Post';
     getPost(match.params.id);
   }, [getPost]);
 
