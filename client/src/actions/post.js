@@ -165,8 +165,8 @@ export const updateComment = (
         'Content-Type': 'application/json'
       }
     };
-    console.log('Attributes from function call in update comment action');
-    console.log(postId, commentId, formData);
+    //console.log('Attributes from function call in update comment action');
+    //console.log(postId, commentId, formData);
 
     const res = await axios.post(
       `/api/posts/comment/${postId}/${commentId}`,
