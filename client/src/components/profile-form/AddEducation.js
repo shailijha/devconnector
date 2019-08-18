@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addEducation } from '../../actions/profile';
@@ -26,6 +26,8 @@ const AddEducation = ({ addEducation, history }) => {
     current,
     description
   } = formData;
+
+  useEffect(() => (document.title = 'Add Education'));
 
   const onChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
