@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, Fragment, useEffect } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -36,6 +36,8 @@ const CreateProfile = ({ createProfile, history }) => {
     youtube,
     instagram
   } = formData;
+
+  useEffect(() => (document.title = 'Create Profile'));
 
   const onChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
