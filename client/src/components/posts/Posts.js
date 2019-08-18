@@ -8,6 +8,7 @@ import PostForm from './PostForm';
 
 const Posts = ({ getPosts, post: { posts, loading } }) => {
   useEffect(() => {
+    document.title = 'Posts';
     getPosts();
   }, [getPosts]);
 
