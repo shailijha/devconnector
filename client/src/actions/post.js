@@ -11,7 +11,6 @@ import {
   REMOVE_COMMENT,
   UPDATE_COMMENT
 } from './types';
-import { set } from 'mongoose';
 
 // Function to get posts
 export const getPosts = () => async dispatch => {
@@ -158,7 +157,7 @@ export const addComment = (postId, formData) => async dispatch => {
 export const updateComment = (
   postId,
   commentId,
-  commentData
+  formData
 ) => async dispatch => {
   try {
     const config = {
@@ -166,10 +165,12 @@ export const updateComment = (
         'Content-Type': 'application/json'
       }
     };
+    console.log('Attributes from function call in update comment action');
+    console.log(postId, commentId, formData);
 
     const res = await axios.post(
-      `/api/posts/comment/${postId}/${commentId}`,
-      commentData,
+      `/api/posts/comment/update/${postId}/${commentId}`,
+      formData,
       config
     );
 
@@ -190,7 +191,7 @@ export const updateComment = (
 // Delete comment
 export const deleteComment = (postId, commentId) => async dispatch => {
   try {
-    const res = await axios.delete(`/api/posts/comment/${postId}/${commentId}`);
+    await axios.delete(`/api/posts/comment/${postId}/${commentId}`);
 
     dispatch({
       type: REMOVE_COMMENT,
