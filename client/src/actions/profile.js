@@ -13,6 +13,18 @@ import {
 // Get the current users profile
 export const getCurrentProfile = () => async dispatch => {
   try {
+    /*const response = axios.get(
+      'https://api.github.com/bradtraversy/devconnector/stats/commit_activity'
+    );
+    console.log('No. of commits', response.data);*/
+
+    const request = require('request');
+    request('http://www.google.com', function(error, response, body) {
+      console.error('error:', error); // Print the error if one occurred
+      console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+      console.log('body:', body); // Print the HTML for the Google homepage.
+    });
+
     const res = await axios.get('/api/profile/me');
 
     dispatch({
