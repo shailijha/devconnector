@@ -1,0 +1,28 @@
+mapLanguageIcons.has(JSON.stringify(skill).toLowerCase()) ?
+
+updateComment(postId, _id, text)
+
+
+
+        <input
+          type='submit'
+          class='btn btn-dark my-1'
+          value='Update Comment'
+          onSubmit={e => updateComment(postId, commentId)}
+        />
+
+
+        <button
+          onClick={e =>
+            updateComment(
+              postId,
+              commentId,
+              document.getElementById('commentform').length > 0
+                ? document.getElementById('commentform').text
+                : ' '
+            )
+          }
+          type='button'
+          className='btn btn-dark my-1'
+          value='Update Comment'
+        />
