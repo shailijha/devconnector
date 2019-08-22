@@ -37,7 +37,7 @@ const CreateProfile = ({ createProfile, history }) => {
     instagram
   } = formData;
 
-  useEffect(() => (document.title = 'Create Profile'));
+  //useEffect(() => (document.title = 'Create Profile'));
 
   const onChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
