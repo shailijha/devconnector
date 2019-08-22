@@ -27,7 +27,7 @@ const AddEducation = ({ addEducation, history }) => {
     description
   } = formData;
 
-  useEffect(() => (document.title = 'Add Education'));
+  //useEffect(() => (document.title = 'Add Education'));
 
   const onChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
