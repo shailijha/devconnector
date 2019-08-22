@@ -46,7 +46,7 @@ const EditProfile = ({
       instagram: loading || !profile.social ? '' : profile.social.instagram
     });
 
-    document.title = 'Edit Profile';
+    //document.title = 'Edit Profile';
   }, [loading, getCurrentProfile]);
 
   const {
