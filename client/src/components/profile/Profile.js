@@ -17,7 +17,7 @@ const Profile = ({
   auth
 }) => {
   useEffect(() => {
-    document.title = 'Developer';
+    //document.title = 'Developer';
     getProfileById(match.params.id);
   }, [getProfileById, match.params.id]);
 
