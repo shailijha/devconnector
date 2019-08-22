@@ -18,7 +18,7 @@ const AddExperience = ({ addExperience, history }) => {
 
   const { company, title, location, from, to, current, description } = formData;
 
-  useEffect(() => (document.title = 'Add Experience'));
+  //useEffect(() => (document.title = 'Add Experience'));
 
   const onChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
