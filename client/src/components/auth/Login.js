@@ -11,10 +11,10 @@ const Login = ({ login, isAuthenticated }) => {
   });
 
   // Similar to componentDidMount and componentDidUpdate:
-  useEffect(() => {
+  /*useEffect(() => {
     // Update the document title using the browser API
     document.title = 'Login';
-  });
+  });*/
 
   const { email, password } = formData;
 
