@@ -73,10 +73,14 @@ export const login = (email, password) => async dispatch => {
   };
 
   const body = JSON.stringify({ email, password });
-
+  console.log('The email and password are: ');
+  console.log(email, password);
+  console.log('JSON.stringify value is ');
+  console.log(body);
   try {
     const res = await axios.post('/api/auth', body, config);
-
+    console.log('res.data');
+    console.log(res.data);
     dispatch({
       type: LOGIN_SUCCESS,
       payload: res.data
@@ -85,7 +89,7 @@ export const login = (email, password) => async dispatch => {
     dispatch(loadUser());
   } catch (err) {
     const errors = err.response.data.errors;
-
+    console.log(errors);
     if (errors) {
       errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
     }
